@@ -38,5 +38,7 @@ npm run build
 ```
 
 Open the 'index.html'
+
 Input email, phone number and password
+
 Press submit and check the user pools
