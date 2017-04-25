@@ -1,7 +1,8 @@
 import {Config, CognitoIdentityCredentials} from "aws-sdk";
 import {
   CognitoUserPool,
-  CognitoUserAttribute
+  CognitoUser,
+  AuthenticationDetails
 } from "amazon-cognito-identity-js";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -22,22 +23,12 @@ class SignUpForm extends React.Component {
     super(props);
     this.state = {
       username: '',
-      email: '',
-      phone: '',
       password: '',
     };
   }
 
   handleUsernameChange(e) {
     this.setState({username: e.target.value});
-  }
-
-  handleEmailChange(e) {
-    this.setState({email: e.target.value});
-  }
-
-  handlePhoneChange(e) {
-    this.setState({phone: e.target.value});
   }
 
   handlePasswordChange(e) {
@@ -47,34 +38,29 @@ class SignUpForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const username = this.state.username.trim();
-    const email = this.state.email.trim();
-    const phone = this.state.phone.trim();
     const password = this.state.password.trim();
 
-    var dataEmail = {
-        Name: 'email',
-        Value: email,
-    }
+    var authenticationData = {
+        Username : username,
+        Password : password,
+    };
+    var authenticationDetails = new AuthenticationDetails(authenticationData);
 
-    var dataPhoneNumber = {
-        Name: 'phone_number',
-        Value: phone,
-    }
+    var userData = {
+        Username : username,
+        Pool : userPool
+    };
+    var cognitoUser = new CognitoUser(userData);
 
-    var attributeEmail = new CognitoUserAttribute(dataEmail);
-    var attributePhoneNumber = new CognitoUserAttribute(dataPhoneNumber);
+    cognitoUser.authenticateUser(authenticationDetails, {
+        onSuccess: function (result) {
+            console.log('access token + ' + result.getAccessToken().getJwtToken());
+        },
 
-    var attributeList = [];
-    attributeList.push(attributeEmail);
-    attributeList.push(attributePhoneNumber);
-
-    userPool.signUp(username, password, attributeList, null, (err, result) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      console.log('user name is ' + result.user.getUsername());
-      console.log('call result: ' + result);
+        onFailure: function(err) {
+            console.log(err);
+            alert(err);
+        },
     });
   }
 
@@ -86,14 +72,6 @@ class SignUpForm extends React.Component {
                placeholder="Username"
                onChange={this.handleUsernameChange.bind(this)}/>
         <input type="text"
-               value={this.state.email}
-               placeholder="Email"
-               onChange={this.handleEmailChange.bind(this)}/>
-        <input type="text"
-               value={this.state.phone}
-               placeholder="Phone"
-               onChange={this.handlePhoneChange.bind(this)}/>
-        <input type="password"
                value={this.state.password}
                placeholder="Password"
                onChange={this.handlePasswordChange.bind(this)}/>

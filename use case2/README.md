@@ -1,16 +1,12 @@
-# Use case1
-Registering a user with the application. One needs to create a CognitoUserPool
-object by providing a UserPoolId and a ClientId and signing up by using a
-username, password, attribute list, and validation data.
+# Use case2
+Confirming a registered, unauthenticated user using a confirmation code
+received via SMS.
 
-First of all, set up the cognito user pools manually
-Follow steps and steps, only change the following stuffs:
-1. In tab Attributes, only tick email required and phone number required
-2. In tab Apps, create a new app, untick the 'Generate client secret'
+Use the use case1 user pool and identity pool directly
 
-Second of all, create a new identity pool in Federated Identities
+Register an user
 
-Afterwards, set up the AWS configuration
+Set up the AWS configuration
 
 ```js
 // src/config.js
@@ -29,8 +25,9 @@ For those variables:
 4. IdentityPoolId can be found at the Federated Identities. in dashboard, click
     'Edit Identity Pool'. There is Identity Pool ID.
 
+First of all, get the confirmation code from email or SMS
 
-Then we can run our use case1 example, by following code in command line:
+Then we can run our use case2 example, by following code in command line:
 
 ```
 npm install
@@ -38,5 +35,5 @@ npm run build
 ```
 
 Open the 'index.html'
-Input email, phone number and password
+Input the username and confirmation code
 Press submit and check the tab 'Users and groups' in the user pools
