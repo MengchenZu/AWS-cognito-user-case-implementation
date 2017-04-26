@@ -1,9 +1,18 @@
-# Use case4
-Retrieve user attributes for an authenticated user.
+# Use case9
+Enabling MFA for a user on a pool that has an optional MFA setting for an authenticated user.
 
-Use the use case1 user pool and identity pool directly
+Use the use case1 user pool and identity pool
 
-Follow use case 1 and 2
+And there are few stuffs need to be changed
+In the tab Verification of the user pool,
+
+Choose 'Optional' for 'Do you want to enable Multi-Factor Authentication (MFA)?'
+
+Tick 'Phone number' for 'Do you want to require verification of emails or phone numbers?'
+
+Create a new role for 'You must provide a role to allow Amazon Cognito to send SMS messages'
+
+Follow use case 1, 2 and 4
 
 Set up the AWS configuration
 
@@ -24,14 +33,14 @@ For those variables:
 4. IdentityPoolId can be found at the Federated Identities. in dashboard, click
     'Edit Identity Pool'. There is Identity Pool ID.
 
-Then we can run our use case4 example.
+Then we can run our use case9 example.
 
 Because package amazon-cognito-identity-js@1.16.0 with react will lead to a
 browser break down in some environments. We can install amazon-cognito-identity-js@1.15.0
 instead, by following code first.
 
 ```
-install amazon-cognito-identity-js@1.15.0
+amazon-cognito-identity-js@1.15.0
 ```
 
 or use the following code directly:
@@ -45,4 +54,5 @@ Open the 'index.html'
 
 Input the username and password
 
-Press submit and check the console
+Press submit and check AWS cognito user pools, in the users and groups tab,
+under the username

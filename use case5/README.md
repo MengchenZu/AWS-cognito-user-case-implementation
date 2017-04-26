@@ -31,7 +31,7 @@ browser break down in some environments. We can install amazon-cognito-identity-
 instead, by following code first.
 
 ```
-amazon-cognito-identity-js@1.15.0
+install amazon-cognito-identity-js@1.15.0
 ```
 
 or use the following code directly:
