@@ -5,7 +5,7 @@ using AWS Javascript SDK and react
 The user cases come from the official tutorial.
     https://github.com/aws/amazon-cognito-identity-js/
 
-For each use cases, they are:
+# For each use cases, they are:
 Use case 1. Registering a user with the application. One needs to create a
 CognitoUserPool object by providing a UserPoolId and a ClientId and signing up
 by using a username, password, attribute list, and validation data.
@@ -45,7 +45,7 @@ Use case 13. Deleting an authenticated user.
 
 
 
-Common error issues:
+# Common error issues:
 1. Browser breaks down:
 
 The reason of the error occurs is package amazon-cognito-identity-js@1.16.0 with react will lead to a
