@@ -18,6 +18,29 @@ code received via SMS.
 Use case 3. Resending a confirmation code via SMS for confirming registration
 for a unauthenticated user.
 
+Use case 4. Authenticating a user and establishing a user session with the
+Amazon Cognito Identity service.
+
+Use case 5. Retrieve user attributes for an authenticated user.
+
+Use case 6. Verify user attribute for an authenticated user.
+
+Use case 7. Delete user attribute for an authenticated user.
+
+Use case 8. Update user attributes for an authenticated user.
+
+Use case 9. Enabling MFA for a user on a pool that has an optional MFA setting
+for an authenticated user.
+
+Use case 10. Disabling MFA for a user on a pool that has an optional MFA
+setting for an authenticated user.
+
+Use case 11. Changing the current password for an authenticated user.
+
+Use case 12. Starting and completing a forgot password flow for an
+unauthenticated user.
+
+Use case 13. Deleting an authenticated user.
 
 
 
