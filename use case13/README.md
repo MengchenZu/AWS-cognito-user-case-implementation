@@ -1,4 +1,4 @@
-# Use case12
+# Use case13
 Deleting an authenticated user.
 
 Use the use case1 user pool and identity pool
